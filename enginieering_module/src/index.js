@@ -3,6 +3,7 @@
 
 import createDiv from './create_node';
 
+
 const div = createDiv();
 console.log('div', div);
 document.body.appendChild(div);

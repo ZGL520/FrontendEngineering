@@ -2,8 +2,20 @@
 
 import './index.css';
 
+import photo from './assets/test.jpeg';
+
+
+
 export default () => {
   const element = document.createElement('h3');
   element.textContent = 'Hello World';
-  return element;
+
+  const image = new Image();
+  image.src = photo;
+
+  const ele = document.createElement('div');
+
+  ele.append(image);
+  ele.append(element);
+  return ele;
 }
