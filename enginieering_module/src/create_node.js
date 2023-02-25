@@ -14,6 +14,7 @@ export default () => {
   image.src = photo;
 
   const ele = document.createElement('div');
+  console.log('hello world');
 
   ele.append(image);
   ele.append(element);

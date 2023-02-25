@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -11,6 +12,7 @@ module.exports = {
     path: path.join(__dirname, 'public')
   },
   devServer: {
+    hot: true,
     static: { directory: path.join(__dirname, 'public') },
     proxy: {
       '/api': {
@@ -70,5 +72,6 @@ module.exports = {
     new HtmlWebpackPlugin({ title: 'Engineering', template: './src/index.html' }),
     /// 将不参加打包的文件拷贝到public目录下
     // new CopyWebpackPlugin({ patterns: [{ from: './src/static', to: './static' }], options: { concurrency: 100 } }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
 };

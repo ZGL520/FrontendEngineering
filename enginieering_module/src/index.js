@@ -7,3 +7,10 @@ import createDiv from './create_node';
 const div = createDiv();
 console.log('div', div);
 document.body.appendChild(div);
+
+
+module.hot.accept('./create_node', () => {
+  document.body.removeChild(div);
+  const div = createDiv();
+  document.body.appendChild(div);
+});

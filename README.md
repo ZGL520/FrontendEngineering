@@ -305,3 +305,43 @@ devServer配置添加静态资源方位配置
   /// 生产环境建议使用 none 
   devtool: 'eval-cheap-module-source-map',
 ```
+
+
+### 自动刷新优化,热拔插(HMR)
+
+1, 自动刷新过程中,当监听到内容变化,会重新打包,然后刷新页面,这会导致页面状态数据丢失
+2, 解决方案,热拔插
+
+打开热拔插有两种方式, 一种是在cli中添加参数
+
+```
+yarn webpack-dev-server --hot
+```
+
+另一种是在配置文件中打开,并且在plugins中打开服务
+```js
+  devServer: {
+    hot: true,
+  },
+```
+
+```js
+new webpack.HotModuleReplacementPlugin(),
+```
+
+
+到这里样式文件会自动更新,但是如果是js改动还是会重新刷新页面
+原因是样式文件自动更新在css-loader中就处理了,js改动需要手动处理
+
+可以在如下demo方法中处理是否更新
+```js
+module.hot.accept('./create_node', () => {
+  document.body.removeChild(div);
+  const div = createDiv();
+  document.body.appendChild(div);
+});
+```
+
+总的来说,webpack没有提供一个完整的js热替换方案,
+具体还是要根据实际情况自定义更新方案,或者使用框架热替换方案
+
