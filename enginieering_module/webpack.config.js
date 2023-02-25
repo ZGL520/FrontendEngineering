@@ -12,6 +12,16 @@ module.exports = {
   },
   devServer: {
     static: { directory: path.join(__dirname, 'public') },
+    proxy: {
+      '/api': {
+        /// 代理到github的api, http://localhost:8080/api/users/xxx => https://api.github.com/users/xxx
+        target: 'https://api.github.com',
+        pathRewrite: { '^/api': '' },
+        /// 代理到本地的api, http://localhost:8080/api/users/xxx => http://localhost:3000/users/xxx
+        /// 不使用localhost, 因为localhost会被浏览器拦截, 无法访问
+        changeOrigin: true,
+      }
+    }
   },
   module: {
     rules: [
