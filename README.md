@@ -28,6 +28,13 @@
 
 ## webpack的使用
 
+
+### webpack资源加载器分类
+
+1, 变异,转化类型, css-loader
+2, 文件操作类型, file-loader, url-loader
+3, 代码质量检查类型, eslint-loader
+
 ### webpack的引入和打包
 1, 初始化webpack.json文件
 
@@ -159,4 +166,22 @@ yarn add url-loader --dev
           }
         }
       }
+```
+
+### 6, es6转换
+
+```
+yarn add babel-loader @babel/core @babel/preset-env --dev
+```
+
+配置
+```js
+      {
+        test: /.js$/, use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          }
+        },
+      },
 ```

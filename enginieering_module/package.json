@@ -4,6 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "bable-loader": "^0.0.1-security",
     "css-loader": "^6.7.3",
     "file-loader": "^6.2.0",
     "style-loader": "^3.3.1",
