@@ -116,7 +116,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/// 导出默认函数, 用于创建一个element节点\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {\n  const element = document.createElement('h3');\n  element.textContent = 'Hello World';\n  return element;\n});\n\n//# sourceURL=webpack://enginieering_module/./src/create_node.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.css */ \"./src/index.css\");\n/// 导出默认函数, 用于创建一个element节点\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (() => {\n  const element = document.createElement('h3');\n  element.textContent = 'Hello World';\n  return element;\n});\n\n//# sourceURL=webpack://enginieering_module/./src/create_node.js?");
 
 /***/ }),
 
@@ -207,8 +207,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _cre
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	__webpack_require__("./src/index.js");
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.css");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
 /******/ 	
 /******/ })()
 ;

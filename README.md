@@ -43,7 +43,7 @@ yarn webpack
 
 ### webpack添加配置文件
 
-1, 添加webpack.config.js文件,添加内容
+#### 1, 添加webpack.config.js文件,添加内容
 
 ```js
 const path = require('path');
@@ -57,7 +57,7 @@ module.exports = {
 };
 ```
 
-2, package.json文件添加命令配置
+#### 2, package.json文件添加命令配置
 
 ```json
 "scripts": {
@@ -65,7 +65,7 @@ module.exports = {
   }
 ```
 
-3, webpack打包模式的是使用
+#### 3, webpack打包模式的是使用
 
 在打包时通过命令行传递参数
 
@@ -87,7 +87,7 @@ module.exports = {
 };
 ```
 
-4, css资源的加载
+#### 4, css资源的加载
 
 1, 添加插件
 
@@ -123,3 +123,5 @@ entry: ['./src/index.js', './src/index.css'],
 module模块中rules模块用于配置模块加载器
 test: 用于匹配文件类型
 use: 使用哪些插件,注意,数组执行顺序从后往前执行
+
+#### 5, css分离
