@@ -141,4 +141,22 @@ yarn add file-loader --dev
 }
 ```
 
+对于项目中一些size比较小的文件,最佳实践是使用url-loader转换成data url,以减少请求次数
 
+url-loader可以通过配置来确定哪些资源需要转换成data url, 例如将10kb以下的图片转换成bs54
+
+```
+yarn add url-loader --dev
+```
+配置如下
+```js
+      {
+        test: /\.(png|svg|jpg|gif|jpeg|webp)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 10240,
+          }
+        }
+      }
+```

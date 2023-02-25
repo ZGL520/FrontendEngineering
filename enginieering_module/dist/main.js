@@ -1,1 +1,0 @@
-(()=>{"use strict";const e=(()=>{const e=document.createElement("h3");return e.textContent="Hello World",e})();console.log("div",e),document.body.appendChild(e)})();
