@@ -23,6 +23,10 @@ module.exports = {
       }
     }
   },
+  /// source map 支持多种类型, 详见 https://webpack.js.org/configuration/devtool/, 
+  /// 开发环境建议使用 eval-cheap-module-source-map,
+  /// 生产环境建议使用 none 
+  devtool: 'eval-cheap-module-source-map',
   module: {
     rules: [
       {

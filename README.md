@@ -292,3 +292,16 @@ devServer配置添加静态资源方位配置
     }
   },
 ```
+
+### source map
+
+1, 添加source map配置
+2, source map配置有很多,可以根据需求调整配置
+3, 以下配置说明是根据经验所得
+
+```js
+  /// source map 支持多种类型, 详见 https://webpack.js.org/configuration/devtool/, 
+  /// 开发环境建议使用 eval-cheap-module-source-map,
+  /// 生产环境建议使用 none 
+  devtool: 'eval-cheap-module-source-map',
+```
