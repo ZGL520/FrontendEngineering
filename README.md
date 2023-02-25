@@ -21,12 +21,40 @@
 
 
 ## webpack的使用
+
+### webpack的引入和打包
 1, 初始化webpack.json文件
+
 2, 添加webpack, webpack-cli
+
 3, 开始打包
 
 ```
 yarn init --yes
 yarn add webpack webpack-cli --dev
 yarn webpack
+```
+
+### webpack添加配置文件
+
+1, 添加webpack.config.js文件,添加内容
+
+```js
+const path = require('path');
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.join(__dirname, 'dist')
+  },
+};
+```
+
+2, package.json文件添加命令配置
+
+```json
+"scripts": {
+    "build": "yarn webpack"
+  }
 ```
