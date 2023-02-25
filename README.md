@@ -132,4 +132,13 @@ use: 使用哪些插件,注意,数组执行顺序从后往前执行
 yarn add file-loader --dev
 ```
 
+2, 添加配置
+
+```js
+{
+  test: /\.(png|svg|jpg|gif|jpeg|webp)$/,
+  use: ['file-loader']
+}
+```
+
 
