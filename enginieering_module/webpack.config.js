@@ -33,6 +33,15 @@ module.exports = {
             limit: 10240,
           }
         }
+      },
+      {
+        test: /\.html$/,
+        use: {
+          loader: 'html-loader',
+          options: {
+            attr: ['img:src', 'img:data-src'],
+          }
+        },
       }
     ]
   },
