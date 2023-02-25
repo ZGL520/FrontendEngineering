@@ -1,18 +1,18 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
   entry: ['./src/index.js'],
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, 'dist'),
-    publicPath: 'dist/',
+    path: path.join(__dirname, 'dist')
   },
   module: {
     rules: [
       {
-        test: /.js$/, use: {
+        test: /.(js|ejs)$/, use: {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env'],
@@ -40,7 +40,7 @@ module.exports = {
         use: {
           loader: 'html-loader',
           options: {
-            attr: ['img:src', 'img:data-src'],
+            esModule: true,
           }
         },
       }
@@ -49,5 +49,6 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({ title: 'Engineering', template: './src/index.html' }),
   ],
 };

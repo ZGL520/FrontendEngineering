@@ -216,3 +216,13 @@ plugins: [
     new HtmlWebpackPlugin(),
   ],
 ```
+注意这里要删除配置文件中的publicPath配置
+
+自定义模板配置
+```js
+new HtmlWebpackPlugin({ title: 'Engineering', template: './src/index.html' }),
+```
+
+如果build过程中碰到语法错误,注意检查html-loader配置,要打开esModule: true
+
+HtmlWebpackPlugin客户实例化多个事例来实现输入多个html页面
