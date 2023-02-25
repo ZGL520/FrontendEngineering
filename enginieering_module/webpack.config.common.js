@@ -25,10 +25,6 @@ module.exports = {
       }
     }
   },
-  /// source map 支持多种类型, 详见 https://webpack.js.org/configuration/devtool/, 
-  /// 开发环境建议使用 eval-cheap-module-source-map,
-  /// 生产环境建议使用 none 
-  devtool: 'eval-cheap-module-source-map',
   module: {
     rules: [
       {
@@ -68,10 +64,7 @@ module.exports = {
   },
 
   plugins: [
-    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({ title: 'Engineering', template: './src/index.html' }),
-    /// 将不参加打包的文件拷贝到public目录下
-    // new CopyWebpackPlugin({ patterns: [{ from: './src/static', to: './static' }], options: { concurrency: 100 } }),
     new webpack.HotModuleReplacementPlugin(),
   ],
 };
