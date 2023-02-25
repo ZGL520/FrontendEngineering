@@ -191,7 +191,7 @@ yarn add babel-loader @babel/core @babel/preset-env --dev
 
 ### 插件
 
-1, 清理上一次打包产出
+1, 清理上一次打包产出, clean-webpack-plugin
 
 ```
 yarn add clean-webpack-plugin --dev
@@ -204,7 +204,7 @@ yarn add clean-webpack-plugin --dev
   ],
 ```
 
-2, 自动生成使用打包结果的html
+2, 自动生成使用打包结果的html, html-webpack-plugin
 
 ```
 yarn add html-webpack-plugin --dev
@@ -226,3 +226,51 @@ new HtmlWebpackPlugin({ title: 'Engineering', template: './src/index.html' }),
 如果build过程中碰到语法错误,注意检查html-loader配置,要打开esModule: true
 
 HtmlWebpackPlugin客户实例化多个事例来实现输入多个html页面
+
+3, 将一些不参加打包的静态资源copy到打包文件
+
+安装
+```
+yarn add copy-webpack-plugin --dev
+```
+
+配置
+```js
+new CopyWebpackPlugin({ patterns: [{ from: './src/static', to: './static' }], options: { concurrency: 100 } })
+```
+
+### 自动编译
+
+监听文件变化,触发打包
+
+1, 运行webpack打包时添加参数,--watch
+
+```
+yarn webpack --watch
+```
+
+成熟方案, webpack-dev-server
+
+安装依赖
+```
+yarn add webpack-dev-server --dev
+```
+
+运行
+```
+yarn webpack-dev-server
+```
+
+package.json文件配置快捷启动
+
+```js
+"start": "yarn webpack-dev-server --mode development --open"
+```
+
+devServer配置添加静态资源方位配置
+
+```js
+ devServer: {
+    static: { directory: path.join(__dirname, 'public') },
+  }
+```

@@ -8,7 +8,7 @@ import photo from './assets/test.jpeg';
 
 export default () => {
   const element = document.createElement('h3');
-  element.textContent = 'Hello World';
+  element.textContent = 'Hello world';
 
   const image = new Image();
   image.src = photo;

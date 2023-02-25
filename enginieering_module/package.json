@@ -9,6 +9,7 @@
     "babel-loader": "^9.1.2",
     "bable-loader": "^0.0.1-security",
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.7.3",
     "file-loader": "^6.2.0",
     "html-loader": "^4.2.0",
@@ -16,9 +17,14 @@
     "style-loader": "^3.3.1",
     "url-loader": "^4.1.1",
     "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1"
   },
   "scripts": {
+    "start": "yarn webpack-dev-server --mode development --open",
     "build": "yarn webpack"
+  },
+  "dependencies": {
+    "browser-sync": "^2.27.12"
   }
 }
