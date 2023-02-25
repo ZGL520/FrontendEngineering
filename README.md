@@ -86,3 +86,40 @@ module.exports = {
   },
 };
 ```
+
+4, css资源的加载
+
+1, 添加插件
+
+```
+yarn add css-loader style-loader --dev
+```
+
+2, 有以下几点需要注意
+
+1, webpack只能处理js文件,其他类型文件需要借助对应的loader插件处理
+2, css文件处理需要加入loader插件,这里使用css-loader
+3, 只使用css-loader加载样式文件无法生效,需要添加style-loader插件
+4, 配置loader是use数组执行顺序从后往前执行,就是下面配置中先执行style-loader,再执行css-loader
+
+3, 添加配置
+```js
+entry: ['./src/index.js', './src/index.css'],
+```
+```js
+  module: {
+    rules: [
+      {
+        test: /.css$/,
+        use: [
+          "style-loader",
+          "css-loader"
+        ],
+      }
+    ]
+  },
+```
+
+module模块中rules模块用于配置模块加载器
+test: 用于匹配文件类型
+use: 使用哪些插件,注意,数组执行顺序从后往前执行
