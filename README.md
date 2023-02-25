@@ -1,5 +1,7 @@
 # 前端工程化
 
+[toc]
+
 工程化的目的: 提升效率/降低成本
 
 
@@ -93,8 +95,8 @@ module.exports = {
   },
 };
 ```
-
-#### 4, css资源的加载
+### 加载器
+#### 1, css资源的加载
 
 1, 添加插件
 
@@ -131,7 +133,7 @@ module模块中rules模块用于配置模块加载器
 test: 用于匹配文件类型
 use: 使用哪些插件,注意,数组执行顺序从后往前执行
 
-#### 5, 图片加载
+#### 2, 图片加载
 
 1, 添加文件加载器
 
@@ -168,7 +170,7 @@ yarn add url-loader --dev
       }
 ```
 
-### 6, es6转换
+#### 3, es6转换
 
 ```
 yarn add babel-loader @babel/core @babel/preset-env --dev
@@ -184,4 +186,33 @@ yarn add babel-loader @babel/core @babel/preset-env --dev
           }
         },
       },
+```
+
+
+### 插件
+
+1, 清理上一次打包产出
+
+```
+yarn add clean-webpack-plugin --dev
+```
+
+配置
+```js
+  plugins: [
+    new CleanWebpackPlugin(),
+  ],
+```
+
+2, 自动生成使用打包结果的html
+
+```
+yarn add html-webpack-plugin --dev
+```
+
+配置
+```js
+plugins: [
+    new HtmlWebpackPlugin(),
+  ],
 ```
