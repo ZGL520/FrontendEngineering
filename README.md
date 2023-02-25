@@ -58,3 +58,25 @@ module.exports = {
     "build": "yarn webpack"
   }
 ```
+
+3, webpack打包模式的是使用
+
+在打包时通过命令行传递参数
+
+```linux
+yarn webpack --mode development
+```
+
+通过配置文件配置参数, webpack一共有三种打包模式,production,development,none,
+模式使用production模式打包
+
+```
+module.exports = {
+  mode: 'production'
+  entry: './src/index.js',
+  output: {
+    filename: 'bundle.js',
+    path: path.join(__dirname, 'dist')
+  },
+};
+```
