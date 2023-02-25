@@ -76,7 +76,7 @@ yarn webpack --mode development
 通过配置文件配置参数, webpack一共有三种打包模式,production,development,none,
 模式使用production模式打包
 
-```
+```js
 module.exports = {
   mode: 'production'
   entry: './src/index.js',
