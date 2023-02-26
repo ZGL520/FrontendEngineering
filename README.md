@@ -429,3 +429,13 @@ new TerserWebpackPlugin(),
 
 ### 输出文件名
 
+给输出文件名添加hash值,解决浏览器缓存问题
+
+通常情况下使用8位的contenthash比较合适
+```js
+output: {
+    filename: '[name]-[contenthash:8].bundle.js',
+    path: path.join(__dirname, 'public'),
+  },
+```
+

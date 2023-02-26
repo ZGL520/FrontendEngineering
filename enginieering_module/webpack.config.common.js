@@ -14,7 +14,7 @@ module.exports = {
     about: './src/about.js',
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name]-[contenthash:8].bundle.js',
     path: path.join(__dirname, 'public'),
   },
   devServer: {
@@ -88,7 +88,7 @@ module.exports = {
     new HtmlWebpackPlugin({ title: 'Engineering', template: './src/about.html', filename: 'about.html', chunks: ['about'] }),
     new webpack.HotModuleReplacementPlugin(),
     /// 不是所有情况都适合把css提取出来, 经验之谈,css文件大于150kb的时候,提取出来,否则不提取
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({ filename: '[name]-[contenthash:8].bundle.css' }),
     /// webpack 建议将压缩类插件配置到optimization.minimizer中
     // new OptimizeCssAssetsPlugin(),
   ],
