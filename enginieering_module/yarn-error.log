@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add webpack-merge --dev
+  /usr/local/bin/node /usr/local/bin/yarn add optimize-css-assets-webpack-plugin --dev
 
 PATH: 
   /Users/zgl/.rvm/gems/ruby-3.0.0/bin:/Users/zgl/.rvm/gems/ruby-3.0.0@global/bin:/Users/zgl/.rvm/rubies/ruby-3.0.0/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/zgl/workspace/flutter/bin:/Users/zgl/.rvm/bin:/Users/zgl/workspace/flutter/bin:/Users/zgl/.rvm/bin
@@ -14,7 +14,7 @@ Platform:
   darwin x64
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/Users/zgl/github/FrontendEngineering/enginieering_module/node_modules/@babel/core/node_modules/ms/license.md'
+  Error: EACCES: permission denied, unlink '/Users/zgl/github/FrontendEngineering/enginieering_module/node_modules/@babel/core/node_modules/ms/index.js'
 
 npm manifest: 
   {
@@ -33,15 +33,17 @@ npm manifest:
       "file-loader": "^6.2.0",
       "html-loader": "^4.2.0",
       "html-webpack-plugin": "^5.5.0",
+      "mini-css-extract-plugin": "^2.7.2",
       "style-loader": "^3.3.1",
       "url-loader": "^4.1.1",
       "webpack": "^5.75.0",
       "webpack-cli": "^5.0.1",
-      "webpack-dev-server": "^4.11.1"
+      "webpack-dev-server": "^4.11.1",
+      "webpack-merge": "^5.8.0"
     },
     "scripts": {
-      "start": "yarn webpack-dev-server --mode development --open",
-      "build": "yarn webpack"
+      "start": "yarn webpack-dev-server --config ./webpack.config.dev --open",
+      "build": "yarn webpack --config ./webpack.config.pro"
     },
     "dependencies": {
       "browser-sync": "^2.27.12"
@@ -3146,6 +3148,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/mimic-fn/-/mimic-fn-2.1.0.tgz#7ed2c2ccccaf84d3ffcb7a69b57711fc2083401b"
     integrity sha512-OqbOk5oEQeAZ8WXWydlu9HJjz9WVdEIvamMCcXmuqUYjTknH/sqsWvhQ3vgwKFRR1HpjvNBKQ37nbJgYzGqGcg==
   
+  mini-css-extract-plugin@^2.7.2:
+    version "2.7.2"
+    resolved "https://registry.yarnpkg.com/mini-css-extract-plugin/-/mini-css-extract-plugin-2.7.2.tgz#e049d3ea7d3e4e773aad585c6cb329ce0c7b72d7"
+    integrity sha512-EdlUizq13o0Pd+uCp+WO/JpkLvHRVGt97RqfeGhXqAcorYo1ypJSpkV+WDT0vY/kmh/p7wRdJNJtuyK540PXDw==
+    dependencies:
+      schema-utils "^4.0.0"
+  
   minimalistic-assert@^1.0.0:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/minimalistic-assert/-/minimalistic-assert-1.0.1.tgz#2e194de044626d4a10e7f7fbc00ce73e83e4d5c7"
@@ -4372,7 +4381,7 @@ Lockfile:
       webpack-dev-middleware "^5.3.1"
       ws "^8.4.2"
   
-  webpack-merge@^5.7.3:
+  webpack-merge@^5.7.3, webpack-merge@^5.8.0:
     version "5.8.0"
     resolved "https://registry.yarnpkg.com/webpack-merge/-/webpack-merge-5.8.0.tgz#2b39dbf22af87776ad744c390223731d30a68f61"
     integrity sha512-/SaI7xY0831XwP6kzuwhKWVKDP9t1QY1h65lAFLbZqMPIuYcD9QAW4u9STIbU9kaJbPBB/geU/gLr1wDjOhQ+Q==

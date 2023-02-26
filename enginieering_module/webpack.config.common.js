@@ -3,13 +3,19 @@ const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: ['./src/index.js'],
+  entry: {
+    app: './src/index.js',
+    about: './src/about.js',
+  },
   output: {
-    filename: 'bundle.js',
-    path: path.join(__dirname, 'public')
+    filename: '[name].bundle.js',
+    path: path.join(__dirname, 'public'),
   },
   devServer: {
     hot: true,
@@ -38,7 +44,8 @@ module.exports = {
       {
         test: /.css$/,
         use: [
-          "style-loader",
+          // "style-loader",
+          MiniCssExtractPlugin.loader,
           "css-loader"
         ],
       },
@@ -63,8 +70,26 @@ module.exports = {
     ]
   },
 
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 30000,
+    },
+    minimizer: [
+      new OptimizeCssAssetsPlugin(),
+      /// 开启这个插件后,原有的压缩插件会失效,需要手动配置,详见 https://webpack.js.org/plugins/terser-webpack-plugin/
+      new TerserWebpackPlugin(),
+    ],
+  },
+
   plugins: [
-    new HtmlWebpackPlugin({ title: 'Engineering', template: './src/index.html' }),
+    /// 设置title, 设置模板, 设置输出文件名, 设置入口文件
+    new HtmlWebpackPlugin({ title: 'Engineering', template: './src/index.html', filename: 'index.html', chunks: ['app'] }),
+    new HtmlWebpackPlugin({ title: 'Engineering', template: './src/about.html', filename: 'about.html', chunks: ['about'] }),
     new webpack.HotModuleReplacementPlugin(),
+    /// 不是所有情况都适合把css提取出来, 经验之谈,css文件大于150kb的时候,提取出来,否则不提取
+    new MiniCssExtractPlugin(),
+    /// webpack 建议将压缩类插件配置到optimization.minimizer中
+    // new OptimizeCssAssetsPlugin(),
   ],
 };

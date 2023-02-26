@@ -353,3 +353,79 @@ module.hot.accept('./create_node', () => {
 配置拆分有两种
 1, 在配置文件中通过判断选择不同的配置
 2, 将不同环境的配置拆分成不同的配置文件管理
+
+### 代码拆分
+
+配置
+```js
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 30000,
+    },
+  },
+```
+
+### 动态导入
+
+使用路由信息字代码中使用import函数实现,例如
+
+```js
+
+if(name == '#app'){
+  import('./app.js').then((res)=>{
+    document.body.append(child);
+  })
+}else{
+  import('./about.js').then((res)=>{
+    document.body.append(child);
+  })
+}
+
+```
+
+### css提取
+
+安装插件 mini-css-extract-plugin
+```
+yarn add mini-css-extract-plugin --dev
+``
+
+添加配置
+``js
+new MiniCssExtractPlugin()
+```
+
+css loader调整, 不在使用style-loader,调整为 MiniCssExtractPlugin.loader
+```
+      {
+        test: /.css$/,
+        use: [
+          // "style-loader",
+          MiniCssExtractPlugin.loader,
+          "css-loader"
+        ],
+      },
+```
+
+css 压缩
+
+添加插件
+```
+yarn add optimize-css-assets-webpack-plugin --dev
+```
+
+配置插件
+```js
+new OptimizeCssAssetsPlugin()
+```
+注意:
+1, webpack 建议将压缩类插件配置到optimization.minimizer中
+2, 开启optimization.minimizer后,原有的js压缩插件会失效,需要手动在minimizer中配置如下插件:terser-webpack-plugin
+```js
+new TerserWebpackPlugin(),
+```
+
+
+### 输出文件名
+
