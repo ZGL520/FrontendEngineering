@@ -22,7 +22,11 @@ module.exports = merge(common, {
   ],
   /// 详见 https://webpack.js.org/configuration/optimization/
   optimization: {
+    /// 压缩js代码
     minimize: true,
+    /// 将所有的模块合并到一个函数中
     usedExports: true,
+    /// 副作用分析,没有用到的模块不会被打包,要确定代码没有副作用,不然会被误判,这个功能慎用,可能会导致代码被误判
+    // sideEffects: true,
   }
 });
