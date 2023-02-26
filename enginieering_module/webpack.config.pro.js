@@ -20,4 +20,9 @@ module.exports = merge(common, {
     //   }
     // }),
   ],
+  /// 详见 https://webpack.js.org/configuration/optimization/
+  optimization: {
+    minimize: true,
+    usedExports: true,
+  }
 });

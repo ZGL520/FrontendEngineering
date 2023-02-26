@@ -4,6 +4,10 @@ import './index.css';
 
 import photo from './assets/test.jpeg';
 
+const getName = () => {
+  return 'hello world';
+}
+
 
 
 export default () => {
